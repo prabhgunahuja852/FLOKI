@@ -24,3 +24,5 @@ jobs:
 
       - name: Run tests
         run: pytest test_floki.py
+      - name: Build Docker image
+        run: docker build -t floki:latest .
