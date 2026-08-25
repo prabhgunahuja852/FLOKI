@@ -26,3 +26,11 @@ jobs:
         run: pytest test_floki.py
       - name: Build Docker image
         run: docker build -t floki:latest .
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Push Docker image
+        run: docker push prabhgun23/floki:latest
